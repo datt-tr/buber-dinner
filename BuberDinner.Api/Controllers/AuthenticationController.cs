@@ -24,10 +24,10 @@ public class AuthenticationController : ControllerBase
       request.Email,
       request.Password);
     var response = new AuthenticationResponse(
-      authResult.id,
-      authResult.FirstName,
-      authResult.LastName,
-      authResult.Email,
+      authResult.User.Id,
+      authResult.User.FirstName,
+      authResult.User.LastName,
+      authResult.User.Email,
       authResult.Token
     );
 
@@ -41,10 +41,10 @@ public class AuthenticationController : ControllerBase
       request.Email,
       request.Password);
     var response = new AuthenticationResponse(
-      authResult.id,
-      authResult.FirstName,
-      authResult.LastName,
-      authResult.Email,
+      authResult.User.Id,
+      authResult.User.FirstName,
+      authResult.User.LastName,
+      authResult.User.Email,
       authResult.Token
     );
     
