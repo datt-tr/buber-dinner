@@ -1,38 +1,38 @@
-using System.Net;
-using System.Reflection.Metadata;
-using System.Security.Cryptography.X509Certificates;
-using System.Text.Json;
-using System.Text.Json.Serialization;
+// using System.Net;
+// using System.Reflection.Metadata;
+// using System.Security.Cryptography.X509Certificates;
+// using System.Text.Json;
+// using System.Text.Json.Serialization;
 
-namespace BuberDinner.Api.Middleware;
+// namespace BuberDinner.Api.Middleware;
 
-public class ErrorHandlingMiddleware
-{
-  private readonly RequestDelegate _next;
+// public class ErrorHandlingMiddleware
+// {
+//   private readonly RequestDelegate _next;
 
-  public ErrorHandlingMiddleware(RequestDelegate next)
-  {
-    _next = next;
-  }
+//   public ErrorHandlingMiddleware(RequestDelegate next)
+//   {
+//     _next = next;
+//   }
 
-  public async Task Invoke(HttpContext context)
-  {
-    try
-    {
-      await _next(context);
-    }
-    catch (Exception ex)
-    {
-      await HandleExceptionAsync(context, ex);
-    }
-  }
+//   public async Task Invoke(HttpContext context)
+//   {
+//     try
+//     {
+//       await _next(context);
+//     }
+//     catch (Exception ex)
+//     {
+//       await HandleExceptionAsync(context, ex);
+//     }
+//   }
 
-  private static Task HandleExceptionAsync(HttpContext context, Exception exception)
-  {
-    var code = HttpStatusCode.InternalServerError;
-    var result = JsonSerializer.Serialize(new { error = "An error occurred while processing your request" });
-    context.Response.ContentType = "application/json";
-    context.Response.StatusCode = (int)code;
-    return context.Response.WriteAsync(result);
-  }
-}
+//   private static Task HandleExceptionAsync(HttpContext context, Exception exception)
+//   {
+//     var code = HttpStatusCode.InternalServerError;
+//     var result = JsonSerializer.Serialize(new { error = "An error occurred while processing your request" });
+//     context.Response.ContentType = "application/json";
+//     context.Response.StatusCode = (int)code;
+//     return context.Response.WriteAsync(result);
+//   }
+// }
